@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-3" routerLink="/">
+      CPUT E-Store
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="/all-products" routerLinkActive="active"
+           ariaCurrentWhenActive="page">All Products
+        </a>
+        <a class="nav-link" routerLink="/apparels" routerLinkActive="active" ariaCurrentWhenActive="page">
+          Apparels
+        </a>
+        <a class="nav-link" routerLink="/accessories" routerLinkActive="active"
+           ariaCurrentWhenActive="page">
+          Accessories
+        </a>
+      </div>
+    </div>
+    <div class="d-flex gap-5 align-items-center">
+      <a routerLink="/cart-items" routerLinkActive="active" ariaCurrentWhenActive="page" type="button">
+        <fa-layers size="2x">
+          <fa-icon [icon]="['fas', 'cart-shopping']" style="color: white"></fa-icon>
+          <fa-layers-counter content="10"></fa-layers-counter>
+        </fa-layers>
+      </a>
+      <a class="btn btn-primary px-5 fs-4 fw-bold" routerLink="/login" routerLinkActive="active"
+         ariaCurrentWhenActive="page" type="button">
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
