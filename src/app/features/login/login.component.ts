@@ -19,13 +19,16 @@ export class LoginComponent implements OnInit {
     let email = document.getElementById("uname") as HTMLInputElement
     let password = document.getElementById("psw") as HTMLInputElement
 
-    this.userService.login(email?.value,password?.value).subscribe( response =>{
-      if(response != null){
-        this.route.navigate(['/'])
-      }else{
+    console.log(email.value)
+    console.log(password.value)
 
-      }
-    })
+    // this.userService.login(email?.value,password?.value).subscribe( response =>{
+    //   if(response != null){
+    //     this.route.navigate(['/'])
+    //   }else{
+    //
+    //   }
+    // })
 
   }
 
