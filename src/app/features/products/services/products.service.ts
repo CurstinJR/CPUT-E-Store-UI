@@ -19,4 +19,8 @@ export class ProductsService {
   getProducts(): Observable<ProductModel[]> {
     return this.http.get<ProductModel[]>(this.PRODUCTS_URL);
   }
+  // createProduct(product:ProductModel): Observable<ProductModel> {
+  //   let createURL = this.PRODUCTS_URL
+  //   return this.http.post<ProductModel>(createURL,product);
+  // }
 }

@@ -10,6 +10,7 @@ import {RegistrationComponent} from "./features/registration/registration.compon
 
 const routes: Routes = [
   {path: '', component: HeroComponent},
+  {path: 'product', loadChildren: () => import('./features/products/products.module').then(m =>m.ProductsModule)},
   {path: 'all-products', component: ProductsComponent},
   {path: 'cart-items', component: CartComponent},
   {path: 'login', component: LoginComponent},
