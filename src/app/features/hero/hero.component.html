@@ -1,1 +1,39 @@
-<p>hero works!</p>
+<!--Feature-->
+<div class="d-flex flex-column gap-5">
+  <!--All Products-->
+  <div class="d-flex flex-column align-self-center gap-3">
+    <div class="d-flex justify-content-between">
+      <h3 class="fs-3 fw-semibold">All Products</h3>
+      <a class="btn btn-outline-primary" routerLink="/products">View All</a>
+    </div>
+    <div class="d-flex gap-5 justify-content-center">
+      <div *ngFor="let product of products">
+        <app-product-card [product]="product" [showAddCartBtn]="false"></app-product-card>
+      </div>
+    </div>
+  </div>
+  <!--Apparels-->
+  <div class="d-flex flex-column align-self-center gap-3">
+    <div class="d-flex justify-content-between">
+      <h3 class="fs-3 fw-semibold">Apparels</h3>
+      <a class="btn btn-outline-primary">View All</a>
+    </div>
+    <div class="d-flex gap-5 justify-content-center">
+      <div *ngFor="let product of products">
+        <app-product-card [product]="product" [showAddCartBtn]="false"></app-product-card>
+      </div>
+    </div>
+  </div>
+  <!--Accessories-->
+  <div class="d-flex flex-column align-self-center gap-3">
+    <div class="d-flex justify-content-between">
+      <h3 class="fs-3 fw-semibold">Accessories</h3>
+      <a class="btn btn-outline-primary">View All</a>
+    </div>
+    <div class="d-flex gap-5 justify-content-center">
+      <div *ngFor="let product of products">
+        <app-product-card [product]="product" [showAddCartBtn]="false"></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>

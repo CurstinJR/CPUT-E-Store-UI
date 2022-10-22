@@ -1,0 +1,23 @@
+<section class="p-5">
+  <div class="container shadow-lg rounded rounded-3 border border-light border-3 d-flex p-5 bg-white">
+    <div class="d-flex flex-column gap-5">
+      <div class="list-group px-4 text-nowrap text-start" role="tablist">
+        <a class="list-group-item list-group-item-action pe-5 active" data-bs-toggle="list" href="#user-profile">
+          Profile
+        </a>
+        <a class="list-group-item list-group-item-action pe-5" data-bs-toggle="list" href="#view-purchases">
+          View Purchases
+        </a>
+      </div>
+      <div class="px-4 d-inline-flex">
+        <a class="btn btn-outline-danger col-12" role="button">Logout</a>
+      </div>
+    </div>
+    <div class="vr mx-5"></div>
+    <div class="flex-fill tab-content">
+      <app-profile [currentUser]="currentUser" class="tab-pane active" id="user-profile" role="tabpanel"></app-profile>
+      <app-view-purchases class="tab-pane" id="view-purchases" role="tabpanel"></app-view-purchases>
+    </div>
+  </div>
+</section>
+

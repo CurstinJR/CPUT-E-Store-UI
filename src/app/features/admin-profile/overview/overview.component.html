@@ -1,0 +1,20 @@
+<div class="overview overflow-hidden pt-5 mt-3 d-flex flex-column">
+  <div class="row align-content-center">
+    <div class="col-10">
+      <div>
+        <h4>Overview</h4>
+      </div>
+      <div class="row justify-content-start text-center gap-5">
+        <div *ngFor="let overview of overviews" class="col-lg-5 col-md-6">
+          <div class="card py-4 btn btn-outline-primary shadow mb-5 bg-body rounded">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a class="stretched-link" routerLink="/{{overview.urlPath}}">{{overview.name}}</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

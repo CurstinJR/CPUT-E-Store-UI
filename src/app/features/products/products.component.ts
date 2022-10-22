@@ -1,30 +1,83 @@
-import {Component, OnInit} from '@angular/core';
-import {ProductsService} from "./services/products.service";
-import {ProductModel} from "./models/product.model";
-import {HttpErrorResponse} from "@angular/common/http";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
-  selector: 'app-all-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: "app-all-products",
+  templateUrl: "./products.component.html",
+  styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent implements OnInit {
 
-  products: ProductModel[] = [];
+  // products: ProductModel[] = [];
 
-  constructor(private productsService: ProductsService) {
+  products: { name: string, price: number, image: string; }[] = [
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    }, {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    },
+    {
+      name: "Product Name",
+      price: 123.15,
+      image: "https://picsum.photos/200"
+    }
+  ];
+
+  categoryFilters: string[] = ["All", "Apparels", "Accessories"];
+
+
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.getProducts();
   }
 
-  getProducts(): void {
-    this.productsService.getProducts()
-      .subscribe((response: ProductModel[]) => {
-        this.products = response;
-      }, (error: HttpErrorResponse) => {
-        alert(error.message);
-      });
-  }
 }
