@@ -1,1 +1,86 @@
-<p>cart works!</p>
+<div class="container">
+  <h1>Shopping Cart</h1>
+  <div class="cart">
+    <div class="products">
+      <div class="product">
+        <img alt="" class="img-thumbnail" src="https://picsum.photos/200">
+        <div class="product-info">
+          <h3 class="product-name">Cput Hoodie</h3>
+          <h4 class="product-price">R 150.00</h4>
+          <p class="product-quantity">Qnt: <input name="" value="1">
+            <button class="product-remove">
+              <i aria-hidden="true" class="fa fa-trash"></i>
+              <span class="remove">Remove</span>
+            </button>
+        </div>
+      </div>
+      <div class="product">
+        <img alt="" class="img-thumbnail" src="https://picsum.photos/200">
+        <div class="product-info">
+          <h3 class="product-name">Black Cput Shirt</h3>
+          <h4 class="product-price">R 85.00</h4>
+          <p class="product-quantity">Qnt: <input name="" value="1">
+            <button class="product-remove">
+              <i aria-hidden="true" class="fa fa-trash"></i>
+              <span class="remove">Remove</span>
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-total">
+      <p>
+        <span>items</span>
+        <span>2</span>
+      </p>
+      <p>
+        <span>sub total</span>
+        <span>R 235.00</span>
+      </p>
+      <p>
+        <span>Tax</span>
+        <span>R 15.00</span>
+      </p>
+      <p>
+        <span>Total</span>
+        <span>R 250.00</span>
+      </p>
+      <button class="btn btn-primary" data-bs-target="#cartModel" data-bs-toggle="modal" type="button">
+        Check Out
+      </button>
+      <div class="modal" id="cartModel" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Payment</h5>
+              <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+              <h6 class="Name">Full Name</h6>
+              <input name="firstname" placeholder="name" type="text">
+              <h6 class="Bank">Select Bank</h6>
+              <select id="bank" name="Bank">
+                <option value="Capitec">Capitec</option>
+                <option value="Absa">Absa</option>
+                <option value="Standard Bank">Standard Bank</option>
+                <option value="Ned Bank">Ned Bank</option>
+              </select>
+              <h6 class="Address">Address</h6>
+              <input name="Address" placeholder="00 Street name" type="text">
+              <h6 class="City/Town">City/Town</h6>
+              <input name="City/Town" placeholder="Capetown" type="text">
+              <h6 class="Card number">Credit Cart Number</h6>
+              <input name="Card number" placeholder="0000000000" type="text">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+              <button class="btn btn-primary" type="button">Proceed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
