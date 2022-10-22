@@ -1,16 +1,28 @@
 <div class="container w-50">
   <div class="px-5">
-    <form class="shadow p-5 bg-body rounded">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="shadow p-5 bg-body rounded" novalidate>
       <h3 class="fs-3 fw-semibold mb-3">Login</h3>
       <div class="mb-3">
         <label class="form-label" for="email">Email address</label>
-        <input aria-describedby="emailHelp" class="form-control" id="email" type="email">
+        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['email'].errors }" class="form-control" formControlName="email" id="email"
+               type="email" />
+        <div *ngIf="isSubmitted && formControls['email'].errors" class="invalid-feedback">
+          <div *ngIf="formControls['email'].errors['required']">Email is required</div>
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="password">Password</label>
-        <input class="form-control" id="password" type="password">
+        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" class="form-control" formControlName="password" id="password"
+               type="password" />
+        <div *ngIf="isSubmitted && formControls['password'].errors" class="invalid-feedback">
+          <div *ngIf="formControls['password'].errors['required']">Password is required</div>
+        </div>
       </div>
-      <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+      <button [disabled]="isLoading" class="btn btn-lg btn-primary" type="submit">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+        Submit
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
     </form>
   </div>
 </div>

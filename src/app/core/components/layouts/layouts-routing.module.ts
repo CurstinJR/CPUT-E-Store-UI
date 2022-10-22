@@ -12,6 +12,7 @@ import {OverviewModule} from "../../../features/admin-profile/overview/overview.
 import {UserManagementModule} from "../../../features/admin-profile/user-management/user-management.module";
 import {ProductManagementModule} from "../../../features/admin-profile/product-management/product-management.module";
 import {OrderManagementModule} from "../../../features/admin-profile/order-management/order-management.module";
+import {AuthGuard} from "../../utils/auth/auth.guard";
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
       {path: "user-mgmt", loadChildren: () => UserManagementModule},
       {path: "product-mgmt", loadChildren: () => ProductManagementModule},
       {path: "order-mgmt", loadChildren: () => OrderManagementModule},
-    ]
+    ],
+    canActivate: [AuthGuard]
   }
 ];
 
