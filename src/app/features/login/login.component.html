@@ -4,7 +4,8 @@
       <h3 class="fs-3 fw-semibold mb-3">Login</h3>
       <div class="mb-3">
         <label class="form-label" for="email">Email address</label>
-        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['email'].errors }" class="form-control" formControlName="email" id="email"
+        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['email'].errors }" class="form-control"
+               formControlName="email" id="email"
                type="email" />
         <div *ngIf="isSubmitted && formControls['email'].errors" class="invalid-feedback">
           <div *ngIf="formControls['email'].errors['required']">Email is required</div>
@@ -12,7 +13,8 @@
       </div>
       <div class="mb-3">
         <label class="form-label" for="password">Password</label>
-        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" class="form-control" formControlName="password" id="password"
+        <input [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" class="form-control"
+               formControlName="password" id="password"
                type="password" />
         <div *ngIf="isSubmitted && formControls['password'].errors" class="invalid-feedback">
           <div *ngIf="formControls['password'].errors['required']">Password is required</div>

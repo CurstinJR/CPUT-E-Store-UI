@@ -1,86 +1,71 @@
-<div class="container">
-  <h1>Shopping Cart</h1>
-  <div class="cart">
-    <div class="products">
-      <div class="product">
-        <img alt="" class="img-thumbnail" src="https://picsum.photos/200">
-        <div class="product-info">
-          <h3 class="product-name">Cput Hoodie</h3>
-          <h4 class="product-price">R 150.00</h4>
-          <p class="product-quantity">Qnt: <input name="" value="1">
-            <button class="product-remove">
-              <i aria-hidden="true" class="fa fa-trash"></i>
-              <span class="remove">Remove</span>
-            </button>
-        </div>
-      </div>
-      <div class="product">
-        <img alt="" class="img-thumbnail" src="https://picsum.photos/200">
-        <div class="product-info">
-          <h3 class="product-name">Black Cput Shirt</h3>
-          <h4 class="product-price">R 85.00</h4>
-          <p class="product-quantity">Qnt: <input name="" value="1">
-            <button class="product-remove">
-              <i aria-hidden="true" class="fa fa-trash"></i>
-              <span class="remove">Remove</span>
-            </button>
-        </div>
-      </div>
+<div class="container-sm d-flex flex-column mb-5 gap-5">
+  <h1 class="fs-1 fw-bold">
+    <a class="text-dark" routerLink="/cart">Shopping Cart</a>
+  </h1>
+  <div class="d-flex justify-content-between gap-5 align-items-start">
+    <!--Cart Item-->
+    <div class="d-inline-flex flex-column flex-fill">
+      <ng-container *ngIf="cartItems.length === 0">
+        <span class="fs-3 fst-italic">
+          No Items in your Cart. Shop at <a routerLink="">CPUT E-Store</a> for the best prices!
+        </span>
+      </ng-container>
+      <app-cart-item (removeProductFromCart)="removeCartItem(cartItem.id)" *ngFor="let cartItem of cartItems"
+                     [cartItem]="cartItem">
+      </app-cart-item>
     </div>
-    <div class="cart-total">
-      <p>
-        <span>items</span>
-        <span>2</span>
-      </p>
-      <p>
-        <span>sub total</span>
-        <span>R 235.00</span>
-      </p>
-      <p>
-        <span>Tax</span>
-        <span>R 15.00</span>
-      </p>
-      <p>
-        <span>Total</span>
-        <span>R 250.00</span>
-      </p>
-      <button class="btn btn-primary" data-bs-target="#cartModel" data-bs-toggle="modal" type="button">
+    <!--Cart Summary-->
+    <div class="shadow p-5 mb-5 bg-body rounded flex-shrink-0">
+      <h3>Cart Summary</h3>
+      <p class="fs-5"><span class="fw-semibold">Items: </span>{{cartSummary.items}}</p>
+      <p class="fs-5"><span class="fw-semibold">Sub Total: </span>R {{cartSummary.subTotal}}</p>
+      <p class="fs-5"><span class="fw-semibold">VAT: </span>R {{cartSummary.vat}}</p>
+      <p class="fs-5"><span class="fw-semibold">Total: </span>R {{cartSummary.total}}</p>
+      <button class="btn btn-success w-100" data-bs-target="#cartModel" data-bs-toggle="modal" type="button">
         Check Out
       </button>
-      <div class="modal" id="cartModel" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Payment</h5>
-              <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-            </div>
-            <div class="modal-body">
-              <h6 class="Name">Full Name</h6>
-              <input name="firstname" placeholder="name" type="text">
-              <h6 class="Bank">Select Bank</h6>
-              <select id="bank" name="Bank">
-                <option value="Capitec">Capitec</option>
-                <option value="Absa">Absa</option>
-                <option value="Standard Bank">Standard Bank</option>
-                <option value="Ned Bank">Ned Bank</option>
-              </select>
-              <h6 class="Address">Address</h6>
-              <input name="Address" placeholder="00 Street name" type="text">
-              <h6 class="City/Town">City/Town</h6>
-              <input name="City/Town" placeholder="Capetown" type="text">
-              <h6 class="Card number">Credit Cart Number</h6>
-              <input name="Card number" placeholder="0000000000" type="text">
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
-              <button class="btn btn-primary" type="button">Proceed</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
-
-
+<!--Checkout Modal-->
+<div class="modal" id="cartModel" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Payment</h5>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label" for="fullName">Full Name</label>
+            <input class="form-control" id="fullName" type="text">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="bank">Bank</label>
+            <select class="form-select" id="bank">
+              <option selected>Select bank</option>
+              <option value="1">Absa</option>
+              <option value="3">FNB</option>
+              <option value="3">Ned Bank</option>
+              <option value="2">Standard Bank</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="address">Address</label>
+            <input class="form-control" id="address" type="text">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="cardNumber">Debit/Credit Card Number</label>
+            <input class="form-control" id="cardNumber" type="text">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+          <button class="btn btn-primary" type="button">Proceed</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

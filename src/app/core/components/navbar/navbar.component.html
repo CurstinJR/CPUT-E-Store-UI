@@ -26,13 +26,27 @@
       <a routerLink="/cart" routerLinkActive="active" type="button">
         <fa-layers size="2x">
           <fa-icon [icon]="['fas', 'cart-shopping']" style="color: white"></fa-icon>
-          <fa-layers-counter content="10"></fa-layers-counter>
+          <fa-layers-counter class="fs-1" content="{{cartLength}}"></fa-layers-counter>
         </fa-layers>
       </a>
-      <a class="btn btn-primary px-5 fs-4 fw-bold" routerLink="/login"
-         routerLinkActive="active" type="button">
+      <a *ngIf="!isUserLoggedIn" class="btn btn-primary px-5 fs-4 fw-bold"
+         routerLink="/login" routerLinkActive="active" type="button">
         Login
       </a>
+      <ng-container *ngIf="isUserLoggedIn">
+        <div class="dropdown">
+          <fa-icon [icon]="profile.icon" [size]="profile.size" aria-expanded="false" class="text-white"
+                   data-bs-toggle="dropdown" href="#" role="button"></fa-icon>
+          <ul class="dropdown-menu dropdown-menu-lg-end">
+            <li>
+              <a class="dropdown-item" role="button" routerLink="/user-profile">View Profile</a>
+            </li>
+            <li>
+              <a (click)="onLogout()" class="dropdown-item text-danger dropdown-logout" role="button">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </div>
   </div>
 </nav>

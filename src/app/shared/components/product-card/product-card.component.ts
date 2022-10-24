@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ProductModel} from "../../../features/models/product.model";
 
 @Component({
   selector: 'app-product-card',
@@ -9,14 +10,20 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 export class ProductCardComponent implements OnInit {
 
   @Input()
-  public product: { name: string, price: number, image: string; };
+  public product: ProductModel;
   @Input()
-  showAddCartBtn: boolean = false;
+  public showAddCartBtn: boolean = false;
+  @Output()
+  public addProductToCart = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  addCartItem(product: ProductModel) {
+    this.addProductToCart.emit(product);
   }
 
 }

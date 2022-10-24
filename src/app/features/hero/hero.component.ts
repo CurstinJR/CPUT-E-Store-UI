@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {ProductModel} from "../models/product.model";
+import {ProductsService} from "../services/products.service";
 
 @Component({
   selector: "app-hero",
@@ -7,33 +9,25 @@ import {Component, OnInit} from "@angular/core";
 })
 export class HeroComponent implements OnInit {
 
-  products: { name: string, price: number, image: string; }[] = [
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-  ];
+  products$: ProductModel[] = [];
 
-  constructor() {
+  constructor(private productService: ProductsService) {
+  }
+
+  public get highlightProducts() {
+    return this.products$.filter((item, index) => index > 5);
   }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  private getAll() {
+    this.productService
+      .getAll()
+      .subscribe((data) => {
+        this.products$ = data;
+      })
   }
 
 }

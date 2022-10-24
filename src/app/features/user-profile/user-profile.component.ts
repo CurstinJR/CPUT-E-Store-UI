@@ -1,5 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {UserModel} from "../models/user.model";
+import {AuthenticationService} from "../../core/_services/authentication.service";
+import {UserService} from "../services/user.service";
+import {LoginUserModel} from "../../core/_models/login-user.model";
 
 @Component({
   selector: "app-user-profile",
@@ -8,17 +11,21 @@ import {UserModel} from "../models/user.model";
 })
 export class UserProfileComponent implements OnInit {
 
-  currentUser: UserModel = {
-    email: "quinn@email.com",
-    firstName: "Quinn",
-    lastName: "Frost",
-    createdAt: new Date()
-  };
+  currentUser: UserModel;
+  currentUserLoginInfo: LoginUserModel;
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService) {
+    let id = this.authenticationService.currentUserValue.id.toString();
+    this.currentUserLoginInfo = this.authenticationService.currentUserValue
+    this.userService.getById(id).subscribe((data) => this.currentUser = data);
   }
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    this.authenticationService.logout();
   }
 
 }

@@ -4,10 +4,11 @@ import {ProductCategoryModel} from "./product-category.model";
 export interface ProductModel {
   "id": number,
   "name": string,
-  "description": string,
+  "description"?: string,
   "price": number,
-  "createdAt": Date,
-  "modifiedAt": Date,
-  "productInventory": ProductInventoryModel,
-  "productCategoryList": ProductCategoryModel[]
+  "image"?: string,
+  "createdAt"?: Date,
+  "modifiedAt"?: Date,
+  "productInventory"?: ProductInventoryModel,
+  "productCategoryList"?: ProductCategoryModel[]
 }

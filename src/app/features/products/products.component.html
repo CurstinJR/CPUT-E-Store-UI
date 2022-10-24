@@ -36,8 +36,10 @@
   </div>
   <!--All Products-->
   <div class="row gy-2">
-    <div *ngFor="let product of products" class="col-4">
-      <app-product-card [product]="product" [showAddCartBtn]="true"></app-product-card>
-    </div>
+    <app-product-card (addProductToCart)="onAddProductToCart($event)" *ngFor="let product of products"
+                      [product]="product"
+                      [showAddCartBtn]="true"
+                      class="col-4">
+    </app-product-card>
   </div>
 </div>

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="d-flex mb-3 shadow p-5 mb-5 bg-body rounded gap-5">
+    <!--TODO: Replace image-->
+    <img alt="{{product.name}}" class="img-thumbnail rounded-start" src="https://picsum.photos/400/300">
+    <div class="d-flex flex-column justify-content-between gap-5">
+      <h3 class="card-title fs-3 fw-semibold">{{product.name}}</h3>
+      <p class="text-break fst-normal">
+        {{product.description}}
+      </p>
+      <span class="card-text fs-4">Price: {{product.price}}</span>
+      <button (click)="addProductToCart(product)" class="d-inline-block btn btn-outline-success p-2">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

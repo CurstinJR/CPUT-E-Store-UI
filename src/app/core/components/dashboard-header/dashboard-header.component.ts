@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppIconModel} from "../../_models/app-icon.model";
-import {faCircleUser} from "@fortawesome/free-solid-svg-icons";
+import {faCircleUser} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-dashboard-header',

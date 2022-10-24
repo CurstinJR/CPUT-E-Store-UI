@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {OrderManagementRoutingModule} from './order-management-routing.module';
 import {OrderManagementComponent} from "./order-management.component";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {OrderManagementComponent} from "./order-management.component";
   ],
   imports: [
     CommonModule,
-    OrderManagementRoutingModule
+    OrderManagementRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class OrderManagementModule {

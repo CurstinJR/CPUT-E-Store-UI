@@ -1,4 +1,7 @@
 import {Component, OnInit} from "@angular/core";
+import {ProductModel} from "../models/product.model";
+import {LocalCartService} from "../services/local-cart.service";
+import {ProductsService} from "../services/products.service";
 
 @Component({
   selector: "app-all-products",
@@ -7,77 +10,28 @@ import {Component, OnInit} from "@angular/core";
 })
 export class ProductsComponent implements OnInit {
 
-  // products: ProductModel[] = [];
-
-  products: { name: string, price: number, image: string; }[] = [
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    }, {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    },
-    {
-      name: "Product Name",
-      price: 123.15,
-      image: "https://picsum.photos/200"
-    }
-  ];
+  products: ProductModel[] = [];
 
   categoryFilters: string[] = ["All", "Apparels", "Accessories"];
 
-
-  constructor() {
+  constructor(private productService: ProductsService,
+              private localCartService: LocalCartService) {
   }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
+    this.productService
+      .getAll()
+      .subscribe((data) => {
+        this.products = data;
+      })
+  }
+
+  onAddProductToCart(product: ProductModel) {
+    this.localCartService.addProductToCart(product);
   }
 
 }
